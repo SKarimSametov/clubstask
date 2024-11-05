@@ -5,15 +5,148 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Категории</h1>
-{% for category in categories %}
-<h3> {{ category.name }}</h3>
-{% endfor %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Категории и Вакансии</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .category, .job {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .category a {
+            display: block;
+            padding: 10px;
+            color: #007BFF;
+            text-decoration: none;
+            border-bottom: 1px solid #ccc;
+        }
+        .category a:hover {
+            background-color: #e0e0e0;
+        }
+        .job {
+            border: 1px solid #007BFF;
+        }
+        .job h2 {
+            color: #007BFF;
+        }
+        .job p {
+            margin: 5px 0;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #ccc;
+        }
+        .alert {
+            color: red;
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Регистрация/Логин</h1>
+    <p>Вы вошли как {{ user.username }}</p>
+
+    <a href="{% url 'signup_page' %}">Зарегистрироваться</a> |
+    <a href="{% url 'login_page' %}">Войти</a>
+    <a href="{% url 'logout_page' %}">Выйти</a>
+    {% if user.is_authenticated %}
+    <h1>Выход и Навигация</h1>
+    <a href="{% url 'logout_page' %}">Выйти</a>
+    <a href="{% url 'full_info' %}">Навигация</a>
+
+        <h1>Все Категории</h1>
+        <div>
+            {% for category in categories %}
+                <div class="category" style="margin-bottom: 10px;">
+                    <a href="{% url 'jobs_by_category_page' category.slug %}" style="font-size: 18px; color: #007BFF; text-decoration: none;">
+                        {{ category.name }}
+                    </a>
+                </div>
+            {% empty %}
+                <p>Категории отсутствуют.</p>
+            {% endfor %}
+        </div>
+
+        <h1>Все Вакансии</h1>
+        <h1>Гайды</h1>
 
 
-<h1>Вакансии</h1>
-{% for j in jobs %}
-<h3> {{ j.title }}</h3>
-{% endfor %}
+
+    <div>
+        {% for j in jobs %}
+            <div class="job">
+                <h2>{{ j.title }}</h2>
+                <p><strong>Курсы:</strong> {{ j.cources }}</p>
+                <p><strong>Место:</strong> {{ j.place }}</p>
+                <p><strong>Оплата:</strong> {{ j.payment }}</p>
+                <p><strong>Кратк. Описание:</strong> {{ j.brief_description }}</p>
+                <p><strong>Места:</strong>
+                    {% if j.members >= j.seats %}
+                        Мест нет
+                    {% else %}
+                        {{ j.seats }}
+                    {% endif %}
+                </p>
+                <a href="{% url 'job_detail_page' j.pk %}">Обзор</a>
+            </div>
+            <hr>
+        {% empty %}
+            <p>На данный момент вакансий нет.</p>
+        {% endfor %}
+    </div>
+<!--        <div>-->
+<!--            {% for j in jobs %}-->
+<!--                <div class="job">-->
+<!--                    <h2>{{ j.title }}</h2>-->
+<!--                    <p><strong>Курсы:</strong> {{ j.cources }}</p>-->
+<!--                    <p><strong>Место:</strong> {{ j.place }}</p>-->
+<!--                    <p><strong>Оплата:</strong> {{ j.payment }}</p>-->
+<!--&lt;!&ndash;                    <p><strong>Место:</strong> {{ j.place }}</p>&ndash;&gt;-->
+<!--                    <p><strong>Кратк. Описание:</strong> {{ j.brief_description }}</p>-->
+<!--&lt;!&ndash;                    <p><strong>Группы:</strong> {{ j.groups }}</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <p><strong>Участники:</strong> {{ j.members }}</p>&ndash;&gt;-->
+<!--                    <p><strong>Места:</strong> {{ j.seats }}</p>-->
+<!--&lt;!&ndash;                    <p><strong>График</strong> {{ j.schedule}}</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <p><strong>Дата публикации:</strong> {{ j.date|date:"d M Y" }}</p> &lt;!&ndash; Форматирование даты &ndash;&gt;&ndash;&gt;-->
+<!--                    <a href="{% url 'job_detail_page' j.pk %}">Обзор</a>-->
+
+<!--                </div>-->
+<!--                <hr>-->
+<!--            {% empty %}-->
+<!--                <p>На данный момент вакансий нет.</p>-->
+<!--            {% endfor %}-->
+<!--        </div>-->
+<!--    {% else %}-->
+
+<!--    {% endif %}-->
+
+
+<!--<h1>Вакансии</h1>-->
+<!--{% for j in jobs %}-->
+<!--<h3> {{ j.title }}</h3>-->
+<!--<h3>{{ j.title }} </h3>-->
+<!--<h3>{{ j.cources }}</h3>-->
+<!--<h3>{{ j.payment }}</h3>-->
+<!--<h3>{{ j.place }}</h3>-->
+<!--<h3>{{ j.date }}</h3>-->
+<!--{% endfor %}-->
 </body>
 </html>

@@ -6,5 +6,24 @@
 </head>
 <body>
 
+
+<div>
+    {% for j in jobs %}
+        <div class="job">
+            <h2>{{ j.title }}</h2>
+            <p><strong>Курсы:</strong> {{ j.cources }}</p>
+            <p><strong>Оплата:</strong> {{ j.payment }}</p>
+            <p><strong>Место:</strong> {{ j.place }}</p>
+            <p><strong>Дата публикации:</strong> {{ j.date|date:"d M Y" }}</p> <!-- Форматирование даты -->
+            <a href="{% url 'job_detail_page' j.pk %}">Обзор</a>
+        </div>
+        <hr>
+    {% empty %}
+        <p>На данный момент вакансий нет.</p>
+    {% endfor %}
+</div>
+
+
+
 </body>
 </html>

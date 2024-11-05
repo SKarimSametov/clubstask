@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ guide.title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+        }
+        .guide-detail {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #fff;
+        }
+        .guide-detail img {
+            max-width: 100%; /* Адаптивный размер изображения */
+            height: auto;    /* Сохраняет пропорции */
+            border-radius: 8px; /* Закругленные углы */
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007BFF;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Детали гайда: {{ guide.title }}</h1>
+
+    <div class="guide-detail">
+        <h2>{{ guide.title }}</h2>
+        <img src="{{ guide.image }}" alt="{{ guide.title }}">
+        <p><strong>Описание:</strong> {{ guide.description }}</p>
+        <p><strong>Дата публикации:</strong> {{ guide.date|date:"d M Y" }}</p>
+    </div>
+
+    <a class="back-link" href="{% url 'guides_page' %}">Назад к списку гайдов</a>
+</body>
+</html>

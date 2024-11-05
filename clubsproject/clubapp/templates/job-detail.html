@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ job.title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .job-detail {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #fff;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Детали вакансии: {{ job.title }}</h1>
+
+    <div class="job-detail">
+        <h2>{{ job.title }}</h2>
+        <p><strong>Курсы:</strong> {{ job.cources }}</p>
+        <p><strong>Оплата:</strong> {{ job.payment }}</p>
+        <p><strong>Кратк описание:</strong> {{ job.brief_description }}</p>
+        <p><strong>Полное описание:</strong> {{ job.full_description }}</p>
+        <p><strong>Группы:</strong> {{ job.groups }}</p>
+        <p><strong>Участников:</strong> {{ job.members }}</p>
+        <p><strong>Места:</strong> {{ job.seats }}</p>
+        <p><strong>Место:</strong> {{ job.place }}</p>
+        <p><strong>Оплата:</strong> {{ job.schedule }}</p>
+        <p><strong>Дата публикации:</strong> {{ job.date|date:"d M Y" }}</p>
+<!--        <p><strong>Описание:</strong> {{ job.description }}</p>-->
+    </div>
+
+    <a href="{% url 'jobs_page' %}">Назад к вакансиям</a>
+</body>
+</html>

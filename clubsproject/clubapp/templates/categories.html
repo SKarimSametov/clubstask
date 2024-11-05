@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Все Категории</h1>
+<div>
+    {% for category in categories %}
+        <div class="category" style="margin-bottom: 10px;">
+            <a href="{% url 'jobs_by_category_page' category.slug %}" style="font-size: 18px; color: #007BFF; text-decoration: none;">
+                {{ category.name }}
+            </a>
+        </div>
+    {% empty %}
+        <p>Категории отсутствуют.</p>
+    {% endfor %}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+</head>
+<body>
+    <h1>Добро пожаловать на страницу выбора</h1>
+
+    <nav>
+        <a href="{% url 'main.urls' %}">Главная</a>
+        <a href="{% url 'categories_page' %}">Категории</a>
+        <a href="{% url 'jobs_page' %}">Вакансии</a>
+        <a href="{% url 'guides_page' %}">Все клубы</a>
+    </nav>
+
+</body>
+</html>

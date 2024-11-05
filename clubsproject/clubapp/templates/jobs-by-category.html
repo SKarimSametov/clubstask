@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вакансии в категории: {{ category.name }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+        }
+        .job {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #fff;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007BFF;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Вакансии в категории: {{ category.name }}</h1>
+
+    <div>
+        {% for job in jobs %}
+            <div class="job">
+                <h2>{{ job.title }}</h2>
+                <p><strong>Курсы:</strong> {{ job.cources }}</p>
+                <p><strong>Оплата:</strong> {{ job.payment }}</p>
+                <p><strong>Место:</strong> {{ job.place }}</p>
+                <p><strong>Дата публикации:</strong> {{ job.date|date:"d M Y" }}</p>
+                <a href="{% url 'job_detail_page' job.pk %}">Обзор</a>
+            </div>
+            <hr>
+        {% empty %}
+            <p>В этой категории вакансий нет.</p>
+        {% endfor %}
+    </div>
+
+    <a class="back-link" href="{% url 'categories_page' %}">Назад к категориям</a>
+</body>
+</html>
