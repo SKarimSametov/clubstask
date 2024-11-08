@@ -26,12 +26,14 @@
               </div>
           </div>
             <div id="popup" class="popup-content" style="display: none;">
-                 {% if user.is_authenticated %}
+                {% if user.is_authenticated %}
                 <a class="popup-text" href="{% url 'main.urls' %}">Главная ></a>
-                <a class="popup-text" href="#">Категории ></a>
+                    {% if user.is_superuser %}
+                    <a class="popup-text" href="{% url 'addclub' %}">Добавить клуб ></a>
+                    {% endif %}
                 <a class="popup-text" href="{% url 'jobs_page' %}">Клубы ></a>
                 <a class="popup-text" href="{% url 'logout_page' %}">Выход({{ request.user }}) ></a>
-                <a href="#" class="popup-text" id="popup-text" >Образовательные кружки ></a>
+                <a href="{% url 'full_info' %}" class="popup-text" id="popup-text" >Политика конфединциальности ></a>
                 {% else %}
                 <a class="popup-text" href="{% url 'main.urls' %}">Главная ></a>
                 <a class="popup-text" href="{% url 'signup_page' %}">Регистрация ></a>

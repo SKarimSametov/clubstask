@@ -4,6 +4,9 @@ from .models import Category, ClubModels
 from django.contrib.auth import login, authenticate, logout
 from .forms import NewUserForm
 from django.contrib.auth.forms import AuthenticationForm
+from django.views.generic import CreateView
+from .forms import AddCLub
+from django.urls import reverse_lazy
 
 def test(request):
     categories = Category.objects.all()
@@ -109,3 +112,8 @@ def login_page(request):
 def logout_page(request):
     logout(request)
     return redirect('main.urls')
+
+class ClubForm(CreateView):
+    form_class = AddCLub
+    template_name = 'addclub.html'
+    success_url = reverse_lazy('main.urls')

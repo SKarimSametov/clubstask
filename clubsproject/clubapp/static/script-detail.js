@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() { // DOMContentLoaded -
 });
 
 function ApplyStyles2(element) {
-    const necessary_classes = ['body', 'header-header', 'see-more__modal-window', ];
+    const necessary_classes = ['body', 'header-header', 'see-more__modal-window', 'see_more'];
     console.log(necessary_classes)
     for (let i of necessary_classes) {
         const temp = document.querySelector(`.${i}`);

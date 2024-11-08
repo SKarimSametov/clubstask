@@ -153,77 +153,81 @@
     z-index: 10;
     text-decoration: none;
 }
-
-.badge-sport{
+.b_logo_block {
+    width: 100%;
+}
+.badge-Sports_club{
     background: linear-gradient(45deg, #00c6fb, #005bea);
     padding: 6px 6px 6px 6px;
     margin: 0 10px 30px 10px;
     /* border: solid 1px #E0E0E0; */
 }
 
-.b_logo_block {
-    width: 100%;
-}
-
-.badge-desc-sport {
+.badge-desc-Sports_club {
     color: white;
     width: 100%;
     height: auto;
     background: #0085D8;
     padding-left: 6px;
 }
-.badge-cyber{
+
+.badge-Cybersports_clubs{
     background: linear-gradient(90deg, #FF2C2C 50%, #990000 100%);
     padding: 6px 6px 6px 6px;
     margin: 0 10px 30px 10px;
-    border: solid 1px white;
 }
-.badge-desc-cyber {
+
+.badge-desc-Cybersports_clubs {
     width: 100%;
     color:white;
     height: auto;
     background: #B50000;
     padding-left: 6px;
 }
-.badge-edu{
+
+.badge-Educations_clubs{
     background: linear-gradient(90deg, #0B42CF 50%, #010158 100%);
     padding: 6px 6px 6px 6px;
     margin: 0 10px 30px 10px;
-    border: solid 1px white;
+
 }
-.badge-desc-edu {
+
+.badge-desc-Educations_clubs {
     width: 100%;
     color: white;
     height: auto;
     background: #07008D;
     padding-left: 6px;
 }
-.badge-table{
+
+.badge-Board_clubs{
     background: linear-gradient(90deg, #FFBF00 50%, #A04A09 100%);
     padding: 6px 6px 6px 6px;
     margin: 0 10px 30px 10px;
-    border: solid 1px white;
 }
-.badge-desc-table {
+
+.badge-desc-Board_clubs {
     width: 100%;
     color: white;
     height: auto;
     background: #DFA700;
     padding-left: 6px;
 }
-.badge-art{
+
+.badge-Art_clubs{
     background: linear-gradient(90deg, #00cca0 50%, #0970a0 100%);
     padding: 5px 5px 5px 5px;
     margin: 0 10px 30px 10px;
-    border: solid 1px white;
 }
-.badge-desc-art {
+
+.badge-desc-Art_clubs {
     width: 100%;
     color: white;
     height: auto;
     background: #00af89;
     padding-left: 6px;
 }
+
 .b_logo {
     object-fit: cover;
     object-position: center;
@@ -272,7 +276,7 @@
     padding: 6px 6px 6px 6px;
     border-radius: 5px;
 }
-.button-sport {
+.button-Sports_club {
     min-width: 250px;
     background: linear-gradient(45deg, #00c6fb, #005bea);
     border-radius: 15px;
@@ -284,13 +288,14 @@
     scroll-snap-align: start;
     color: white;
     transition: 0.3s ease-in-out;
+}
 
-}
-.button-sport:focus{
+.button-Sports_club:focus {
     background: linear-gradient(45deg, #7be2ff, #6e9ae0);
-    color:rgb(220, 220, 220);
+    color: rgb(220, 220, 220);
 }
-.button-cyber {
+
+.button-Cybersports_clubs {
     min-width: 250px;
     background: linear-gradient(90deg, #FF2C2C 50%, #990000 100%);
     border-radius: 15px;
@@ -301,13 +306,15 @@
     cursor: pointer;
     scroll-snap-align: start;
     color: white;
-    transition: 0.3s ease-in-out
+    transition: 0.3s ease-in-out;
 }
-.button-cyber:focus{
+
+.button-Cybersports_clubs:focus {
     background: linear-gradient(90deg, #ff8888 50%, #8f4949 100%);
-    color:rgb(220, 220, 220);
+    color: rgb(220, 220, 220);
 }
-.button-edu {
+
+.button-Educations_clubs {
     min-width: 250px;
     background: linear-gradient(90deg, #0B42CF 50%, #010158 100%);
     border-radius: 15px;
@@ -318,13 +325,15 @@
     cursor: pointer;
     scroll-snap-align: start;
     color: white;
-    transition: 0.3s ease-in-out
+    transition: 0.3s ease-in-out;
 }
-.button-edu:focus{
+
+.button-Educations_clubs:focus {
     background: linear-gradient(90deg, #6e89cf 50%, #2b2b52 100%);
-    color:rgb(220, 220, 220);
+    color: rgb(220, 220, 220);
 }
-.button-table {
+
+.button-Board_clubs {
     min-width: 250px;
     background: linear-gradient(90deg, #FFBF00 50%, #A04A09 100%);
     border-radius: 15px;
@@ -335,13 +344,15 @@
     cursor: pointer;
     scroll-snap-align: start;
     color: white;
-    transition: 0.3s ease-in-out
+    transition: 0.3s ease-in-out;
 }
-.button-table:focus {
+
+.button-Board_clubs:focus {
     background: linear-gradient(90deg, #ffe083 50%, #996f4f 100%);
-    color:rgb(220, 220, 220);
+    color: rgb(220, 220, 220);
 }
-.button-art {
+
+.button-Art_clubs {
     min-width: 250px;
     background: linear-gradient(90deg, #00cca0 50%, #0970a0 100%);
     border-radius: 15px;
@@ -352,12 +363,14 @@
     cursor: pointer;
     scroll-snap-align: start;
     color: white;
-    transition: 0.3s ease-in-out
+    transition: 0.3s ease-in-out;
 }
-.button-art:focus{
+
+.button-Art_clubs:focus {
     background: linear-gradient(90deg, #68c7b2 50%, #52859c 100%);
-    color:rgb(220, 220, 220);
+    color: rgb(220, 220, 220);
 }
+
 .container_protection {
     margin:0 20px 20px 0;
     text-align: center;
@@ -557,19 +570,19 @@
     margin-right: 20px;
     font-size: 16px;
 }
-.see-more__modal-window_sport {
+.see-more__modal-window_Sports_club {
     background: linear-gradient(45deg, #ffffff, #CBCBCB);
 }
-.see-more__modal-window_art {
+.see-more__modal-window_Art_clubs {
     background: linear-gradient(90deg, #00cca0 50%, #0970a0 100%);
 }
-.see-more__modal-window_edu {
+.see-more__modal-window_Educations_clubs {
     background: linear-gradient(90deg, #0B42CF 50%, #010158 100%);
 }
-.see-more__modal-window_table {
+.see-more__modal-window_Board_clubs {
     background: linear-gradient(90deg, #FFBF00 50%, #A04A09 100%);
 }
-.see-more__modal-window_cyber {
+.see-more__modal-window_Cybersports_clubs {
     background: linear-gradient(90deg, #FF2C2C 50%, #990000 100%);
 }
 .cross {

@@ -8,14 +8,14 @@
   }
 
 /* component */
-.body_sport {
+.body_Sports_club {
     position: relative;
     z-index: 1;
     margin: 0;
     height: 100%; /* на всякий случай, чтобы он занимал весь экран */
 }
 
-.body_sport::before {
+.body_Sports_club::before {
     content: "";
     position: absolute;
     top: 0;
@@ -31,7 +31,7 @@
 }
 
 
-.body_cyber {
+.body_Cybersports_clubs {
     position: relative;
     z-index: 1;
     margin: 0;
@@ -46,12 +46,12 @@
     overflow-x: hidden;
 }
 
-.body_edu {
+.body_Educations_clubs {
     position: relative;
     z-index: 1;
     margin: 0;
     height: 100%; /* на всякий случай, чтобы он занимал весь экран */
-    background-image: url(../images/bg-edu.png);
+    background-image: url("images/bg-edu.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -60,12 +60,12 @@
     color: white;
     overflow-x: hidden;
 }
-.body_table {
+.body_Board_clubs {
     position: relative;
     z-index: 1;
     margin: 0;
     height: 100%; /* на всякий случай, чтобы он занимал весь экран */
-    background-image: url(../images/bg-table.jpg);
+    background-image: url("images/board game.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -74,12 +74,12 @@
     color: white;
     overflow-x: hidden;
 }
-.body_art {
+.body_Art_clubs {
     position: relative;
     z-index: 1;
     margin: 0;
     height: 100%; /* на всякий случай, чтобы он занимал весь экран */
-    background-image: url(../images/bg-art.png);
+    background-image: url("images/bg-art.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -93,7 +93,7 @@
 .container {
     margin: 0 20px;
 }
-.header-header_sport {
+.header-header_Sports_club {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -104,7 +104,7 @@
     z-index: 99;
     width: 100%;
 }
-.header-header_cyber {
+.header-header_Cybersports_clubs{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -115,7 +115,7 @@
     z-index: 99;
     width: 100%;
 }
-.header-header_edu {
+.header-header_Educations_clubs {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -126,7 +126,7 @@
     z-index: 99;
     width: 100%;
 }
-.header-header_table {
+.header-header_Board_clubs {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -137,7 +137,7 @@
     z-index: 99;
     width: 100%;
 }
-.header-header_art {
+.header-header_Art_clubs {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -293,7 +293,7 @@
     font-size: 14px;
 }
 
-.see_more_sport {
+.see_more_Sports_club {
     cursor: pointer;
     font-size: 13px;
     color: #005BEA;
@@ -301,7 +301,8 @@
     background-color: transparent;
     border: none;
 }
-.see_more_cyber {
+
+.see_more_Cybersports_clubs {
     cursor: pointer;
     font-size: 13px;
     color: #FF2C2C;
@@ -309,7 +310,8 @@
     background-color: transparent;
     border: none;
 }
-.see_more_art {
+
+.see_more_Art_clubs {
     cursor: pointer;
     font-size: 13px;
     color: #00a82d;
@@ -317,7 +319,8 @@
     background-color: transparent;
     border: none;
 }
-.see_more_edu {
+
+.see_more_Educations_clubs {
     cursor: pointer;
     font-size: 13px;
     color: #0066ff;
@@ -325,7 +328,8 @@
     background-color: transparent;
     border: none;
 }
-.see_more_table {
+
+.see_more_Board_clubs {
     cursor: pointer;
     font-size: 13px;
     color: #FFBF00;
@@ -333,6 +337,7 @@
     background-color: transparent;
     border: none;
 }
+
 
 
 
@@ -401,5 +406,5 @@
 }
 
 .date {
-    margin: 20px 0;
+    padding: 20px 0;
 }

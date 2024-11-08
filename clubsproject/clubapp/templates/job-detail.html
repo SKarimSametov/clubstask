@@ -22,14 +22,12 @@
             <div id="popup" class="popup-content" style="display: none;">
                 {% if user.is_authenticated %}
                 <a class="popup-text" href="{% url 'main.urls' %}">Главная ></a>
-                <a class="popup-text" href="#">Категории ></a>
+                    {% if user.is_superuser %}
+                    <a class="popup-text" href="{% url 'addclub' %}">Добавить клуб ></a>
+                    {% endif %}
                 <a class="popup-text" href="{% url 'jobs_page' %}">Клубы ></a>
                 <a class="popup-text" href="{% url 'logout_page' %}">Выход({{ request.user }}) ></a>
-                <a href="#" class="popup-text" id="popup-text" >Образовательные кружки ></a>
-
-<!--                Need to remove-->
-                <a class="popup-text" href="{% url 'signup_page' %}">Регистрация ></a>
-                <a class="popup-text" href="{% url 'login_page' %}">Вход ></a>
+                <a href="{% url 'full_info' %}" class="popup-text" id="popup-text" >Политика конфединциальности ></a>
                 {% else %}
                 <a class="popup-text" href="{% url 'main.urls' %}">Главная ></a>
                 <a class="popup-text" href="{% url 'signup_page' %}">Регистрация ></a>
@@ -75,7 +73,7 @@
                         <div class="description-club__groups">
                             <div class="groups-component">
                                 <div class="groups">Группы: <span>{{ club.groups|truncatechars:15 }}</span></div>
-                                <button onclick="see_moreAction()" id="see_more" class="see_more_sport">смотреть полностью...</button>
+                                <button onclick="see_moreAction()" id="see_more" class="see_more">смотреть полностью...</button>
                             </div>
                             <div class="people_amount">Количество человек: <span class="amount">{{ club.members }}</span></div>
                             <div class="places">

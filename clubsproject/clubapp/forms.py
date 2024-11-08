@@ -1,6 +1,8 @@
 from django import forms
+from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import ClubModels
 
 class NewUserForm(UserCreationForm):
     class Meta:
@@ -8,3 +10,7 @@ class NewUserForm(UserCreationForm):
         fields = ("username", "first_name", "email", "password1", "password2")
 
 
+class AddCLub(ModelForm):
+    class Meta:
+        model = ClubModels
+        fields = ("title", "cources", "payment", "brief_description", "full_description", "groups", "members", "seats", "place", "schedule", "image", "category")

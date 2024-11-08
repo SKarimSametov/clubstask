@@ -25,14 +25,12 @@
             <div id="popup" class="popup-content" style="display: none;">
                 {% if user.is_authenticated %}
                 <a class="popup-text" href="{% url 'main.urls' %}">Главная ></a>
-                <a class="popup-text" href="#">Категории ></a>
+                    {% if user.is_superuser %}
+                    <a class="popup-text" href="{% url 'addclub' %}">Добавить клуб ></a>
+                    {% endif %}
                 <a class="popup-text" href="{% url 'jobs_page' %}">Клубы ></a>
                 <a class="popup-text" href="{% url 'logout_page' %}">Выход({{ request.user }}) ></a>
-                <a href="#" class="popup-text" id="popup-text" >Образовательные кружки ></a>
-
-<!--                Need to remove-->
-                <a class="popup-text" href="{% url 'signup_page' %}">Регистрация ></a>
-                <a class="popup-text" href="{% url 'login_page' %}">Вход ></a>
+                <a href="{% url 'full_info' %}" class="popup-text" id="popup-text" >Политика конфединциальности ></a>
                 {% else %}
                 <a class="popup-text" href="{% url 'main.urls' %}">Главная ></a>
                 <a class="popup-text" href="{% url 'signup_page' %}">Регистрация ></a>
@@ -41,6 +39,7 @@
             </div>
         </div>
     </header>
+    {% if user.is_authenticated %}
     <main>
         <section class="mobile-block">
             <div class="container">
@@ -136,6 +135,45 @@
 
         </section>
     </main>
+    {% else %}
+    <div class="main">
+        <section class = mobile-block>
+            <div class="container_protection">
+                <div class="protection-title">
+                Вы не зарегестрировались или не вошли
+            </div>
+            <div class="btn-space"></div>
+            <form action="./registration_page.html">
+                <button class="register">
+                    <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-person-fill-check" viewBox="0 0 16 16">
+                        <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                        <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
+                    </svg>
+                    <h3 class="button-text">Регистрация</h3>
+                </button>
+            </form>
+            <div class="btn-space"></div>
+            <form action="./login_page.html">
+                <button class="login">
+                    <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-person-fill-up" viewBox="0 0 16 16">
+                        <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.354-5.854 1.5 1.5a.5.5 0 0 1-.708.708L13 11.707V14.5a.5.5 0 0 1-1 0v-2.793l-.646.647a.5.5 0 0 1-.708-.708l1.5-1.5a.5.5 0 0 1 .708 0M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                        <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
+                    </svg>
+                    <h3 class="button-text">Вход</h3>
+                </button>
+            </form>
+            <div class="btn-space"></div>
+            <form action="main_page.html">
+                <button class="back">
+                    <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+                    </svg>
+                    <h3 class="button-text">Назад</h3>
+                </button>
+            </form>
+        </section>
+    </div>
+    {% endif %}
 </body>
 </html>
 
