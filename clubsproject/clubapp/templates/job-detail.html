@@ -1,46 +1,98 @@
 <!DOCTYPE html>
-<html lang="ru">
+{% load static %}
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ job.title }}</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .job-detail {
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 10px 0;
-            background-color: #fff;
-        }
-        h1 {
-            text-align: center;
-        }
-    </style>
+    <title>{{ club.title }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style_detail.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <script type="text/javascript" src="{% static 'script.js' %}"></script>
+    <script type="text/javascript" src="{% static 'script-detail.js' %}"></script>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');</style>
 </head>
-<body>
-    <h1>Детали вакансии: {{ job.title }}</h1>
+<body id="body_id" class="body">
+    <header class="header">
+        <div class="header-header">
+                <img onclick="MenuAction()" class="popup" src="{% static 'images/popup.svg' %}" alt="popup">
+                <div class="header-title">Кружки Колледжа</div>
+                <div></div>
+            </div>
+        </div>
+            <div id="popup" class="popup-content" style="display: none;">
+                {% if user.is_authenticated %}
+                <a class="popup-text" href="{% url 'main.urls' %}">Главная ></a>
+                <a class="popup-text" href="#">Категории ></a>
+                <a class="popup-text" href="{% url 'jobs_page' %}">Клубы ></a>
+                <a class="popup-text" href="{% url 'logout_page' %}">Выход({{ request.user }}) ></a>
+                <a href="#" class="popup-text" id="popup-text" >Образовательные кружки ></a>
 
-    <div class="job-detail">
-        <h2>{{ job.title }}</h2>
-        <p><strong>Курсы:</strong> {{ job.cources }}</p>
-        <p><strong>Оплата:</strong> {{ job.payment }}</p>
-        <p><strong>Кратк описание:</strong> {{ job.brief_description }}</p>
-        <p><strong>Полное описание:</strong> {{ job.full_description }}</p>
-        <p><strong>Группы:</strong> {{ job.groups }}</p>
-        <p><strong>Участников:</strong> {{ job.members }}</p>
-        <p><strong>Места:</strong> {{ job.seats }}</p>
-        <p><strong>Место:</strong> {{ job.place }}</p>
-        <p><strong>Оплата:</strong> {{ job.schedule }}</p>
-        <p><strong>Дата публикации:</strong> {{ job.date|date:"d M Y" }}</p>
-<!--        <p><strong>Описание:</strong> {{ job.description }}</p>-->
-    </div>
+<!--                Need to remove-->
+                <a class="popup-text" href="{% url 'signup_page' %}">Регистрация ></a>
+                <a class="popup-text" href="{% url 'login_page' %}">Вход ></a>
+                {% else %}
+                <a class="popup-text" href="{% url 'main.urls' %}">Главная ></a>
+                <a class="popup-text" href="{% url 'signup_page' %}">Регистрация ></a>
+                <a class="popup-text" href="{% url 'login_page' %}">Вход ></a>
+                {% endif %}
+            </div>
+    </header>
+    <main class="main">
+        <div class="container">
+            <div class="detail-club">
+                <div class="detail-club__title">
+                    <h3>{{ club.title }}</h3>
+                </div>
+                <div class="picture-club">
+                    <div class="picture-club__block_grey">
+                        <img class="limiter" src="{{ club.image }}" rel="cartinka" class="picture-club__picture">
+                    </div>
+                </div>
+                <div class="descriptopn-club">
 
-    <a href="{% url 'jobs_page' %}">Назад к вакансиям</a>
+                    <div id="see-more__modal-window" class="see-more__modal-window" style="display:none;">
+                        <div class="see-more__text">Группы: <span>{{ club.groups }}</span></div>
+                        <div id='cross_button' class="cross" onclick="close_ModalWindow()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FF0000" class="bi bi-x-lg" viewBox="0 0 16 16">
+  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+</svg></div>
+                    </div>
+
+                    <div class="descriptopn-club__block1">
+                        <div class="description-club__criteria">
+                            <div class="course">Курс: <span>{{ club.cources }}</span></div>
+                            <div class="category" style="display: none;">
+                                {{club.category }}
+                            </div>
+                            <div class="payment">Платеж: <span>
+                                {% if club.payment == 0 %}
+                                    Бесплатно
+                                {% else %}
+                                    {{ club.payment }}
+                                {% endif %}
+                            </span></div>
+                            <div class="schedule">График: <span>{{ club.schedule }}</span></div>
+                        </div>
+                        <div class="description-club__groups">
+                            <div class="groups-component">
+                                <div class="groups">Группы: <span>{{ club.groups|truncatechars:15 }}</span></div>
+                                <button onclick="see_moreAction()" id="see_more" class="see_more_sport">смотреть полностью...</button>
+                            </div>
+                            <div class="people_amount">Количество человек: <span class="amount">{{ club.members }}</span></div>
+                            <div class="places">
+                                {% if j.members >= j.seats %}
+                                    Мест нет
+                                {% else %}
+                                    Места есть
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="descriptopn-club__block2_black">
+                        <div class="description">Описание: <span class="description">{{ club.full_description }}</span></div>
+                    </div>
+                    <p class="date"><strong>Дата публикации:</strong> {{ club.date|date:"d M Y" }}</p>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
-</html>

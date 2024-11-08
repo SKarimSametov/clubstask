@@ -51,3 +51,72 @@
     </div>
 </body>
 </html>
+<!--<!DOCTYPE html>-->
+<!--{% load static %}-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="ru">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Категории и Вакансии</title>-->
+<!--    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1 class="h1">Регистрация/Логин</h1>-->
+<!--    <p>Вы вошли как {{ user.username }}</p>-->
+
+<!--    <a href="{% url 'signup_page' %}">Зарегистрироваться</a> |-->
+<!--    <a href="{% url 'login_page' %}">Войти</a>-->
+<!--    <a href="{% url 'logout_page' %}">Выйти</a>-->
+<!--    {% if user.is_authenticated %}-->
+<!--    <h1>Выход и Навигация</h1>-->
+<!--    <a href="{% url 'logout_page' %}">Выйти</a>-->
+<!--    <a href="{% url 'full_info' %}">Навигация</a>-->
+
+<!--        <h1>Все Категории</h1>-->
+<!--        <div>-->
+<!--            {% for category in categories %}-->
+<!--                <div class="category" style="margin-bottom: 10px;">-->
+<!--                    <a href="{% url 'jobs_by_category_page' category.slug %}" style="font-size: 18px; color: #007BFF; text-decoration: none;">-->
+<!--                        {{ category.name }}-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            {% empty %}-->
+<!--                <p>Категории отсутствуют.</p>-->
+<!--            {% endfor %}-->
+<!--        </div>-->
+
+<!--        <h1>Все Вакансии</h1>-->
+<!--        <h1>Гайды</h1>-->
+
+
+
+<!--    <div>-->
+<!--        {% for j in jobs %}-->
+<!--            <div class="job">-->
+<!--                <h2>{{ j.title }}</h2>-->
+<!--                <p><strong>Курсы:</strong> {{ j.cources }}</p>-->
+<!--                <p><strong>Место:</strong> {{ j.place }}</p>-->
+<!--                <p><strong>Оплата:</strong> {{ j.payment }}</p>-->
+<!--                <p><strong>Кратк. Описание:</strong> {{ j.brief_description }}</p>-->
+<!--                <p><strong>Места:</strong>-->
+<!--                    {% if j.members >= j.seats %}-->
+<!--                        Мест нет-->
+<!--                    {% else %}-->
+<!--                        {{ j.members }}-->
+<!--                    {% endif %}-->
+<!--                </p>-->
+<!--                <a href="{% url 'job_detail_page' j.pk %}">Обзор</a>-->
+<!--            </div>-->
+<!--            <hr>-->
+<!--        {% empty %}-->
+<!--            <p>На данный момент вакансий нет.</p>-->
+<!--        {% endfor %}-->
+<!--    </div>-->
+<!--</body>-->
+<!--</html>-->
