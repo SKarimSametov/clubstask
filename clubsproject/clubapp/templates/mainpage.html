@@ -1,152 +1,143 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Категории и Вакансии</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        .category, .job {
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 10px 0;
-        }
-        .category a {
-            display: block;
-            padding: 10px;
-            color: #007BFF;
-            text-decoration: none;
-            border-bottom: 1px solid #ccc;
-        }
-        .category a:hover {
-            background-color: #e0e0e0;
-        }
-        .job {
-            border: 1px solid #007BFF;
-        }
-        .job h2 {
-            color: #007BFF;
-        }
-        .job p {
-            margin: 5px 0;
-        }
-        hr {
-            border: 0;
-            height: 1px;
-            background-color: #ccc;
-        }
-        .alert {
-            color: red;
-            text-align: center;
-            margin: 20px 0;
-        }
-    </style>
+    <title>Главная</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <script type="text/javascript" src="{% static 'script.js' %}"></script>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');</style>
 </head>
 <body>
-    <h1>Регистрация/Логин</h1>
-    <p>Вы вошли как {{ user.username }}</p>
-
-    <a href="{% url 'signup_page' %}">Зарегистрироваться</a> |
-    <a href="{% url 'login_page' %}">Войти</a>
-    <a href="{% url 'logout_page' %}">Выйти</a>
-    {% if user.is_authenticated %}
-    <h1>Выход и Навигация</h1>
-    <a href="{% url 'logout_page' %}">Выйти</a>
-    <a href="{% url 'full_info' %}">Навигация</a>
-
-        <h1>Все Категории</h1>
-        <div>
-            {% for category in categories %}
-                <div class="category" style="margin-bottom: 10px;">
-                    <a href="{% url 'jobs_by_category_page' category.slug %}" style="font-size: 18px; color: #007BFF; text-decoration: none;">
-                        {{ category.name }}
-                    </a>
+    <header>
+        <div class="header">
+            <div class="container">
+                <div class="logo">
+                    <img class="logo" src="{% static 'images/logo.jpg' %}" alt="logo">
                 </div>
-            {% empty %}
-                <p>Категории отсутствуют.</p>
-            {% endfor %}
-        </div>
-
-        <h1>Все Вакансии</h1>
-        <h1>Гайды</h1>
-
-
-
-    <div>
-        {% for j in jobs %}
-            <div class="job">
-                <h2>{{ j.title }}</h2>
-                <p><strong>Курсы:</strong> {{ j.cources }}</p>
-                <p><strong>Место:</strong> {{ j.place }}</p>
-                <p><strong>Оплата:</strong> {{ j.payment }}</p>
-                <p><strong>Кратк. Описание:</strong> {{ j.brief_description }}</p>
-                <p><strong>Места:</strong>
-                    {% if j.members >= j.seats %}
-                        Мест нет
-                    {% else %}
-                        {{ j.seats }}
-                    {% endif %}
-                </p>
-                <a href="{% url 'job_detail_page' j.pk %}">Обзор</a>
+                <div class="panel">
+                    <img onclick="MenuAction()" class="popup" src="{% static 'images/popup.svg' %}" alt="popup">
+                    <div class="panel--text"><h3>Кружки Колледжа</h3></div>
+                    <div class="empty"></div>
+                </div>
             </div>
-            <hr>
-        {% empty %}
-            <p>На данный момент вакансий нет.</p>
-        {% endfor %}
-    </div>
-<!--        <div>-->
-<!--            {% for j in jobs %}-->
-<!--                <div class="job">-->
-<!--                    <h2>{{ j.title }}</h2>-->
-<!--                    <p><strong>Курсы:</strong> {{ j.cources }}</p>-->
-<!--                    <p><strong>Место:</strong> {{ j.place }}</p>-->
-<!--                    <p><strong>Оплата:</strong> {{ j.payment }}</p>-->
-<!--&lt;!&ndash;                    <p><strong>Место:</strong> {{ j.place }}</p>&ndash;&gt;-->
-<!--                    <p><strong>Кратк. Описание:</strong> {{ j.brief_description }}</p>-->
-<!--&lt;!&ndash;                    <p><strong>Группы:</strong> {{ j.groups }}</p>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <p><strong>Участники:</strong> {{ j.members }}</p>&ndash;&gt;-->
-<!--                    <p><strong>Места:</strong> {{ j.seats }}</p>-->
-<!--&lt;!&ndash;                    <p><strong>График</strong> {{ j.schedule}}</p>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <p><strong>Дата публикации:</strong> {{ j.date|date:"d M Y" }}</p> &lt;!&ndash; Форматирование даты &ndash;&gt;&ndash;&gt;-->
-<!--                    <a href="{% url 'job_detail_page' j.pk %}">Обзор</a>-->
+            <div id="popup" class="popup-content" style="display: none;">
+                {% if user.is_authenticated %}
+                <a class="popup-text" href="{% url 'main.urls' %}">Главная ></a>
+                <a class="popup-text" href="#">Категории ></a>
+                <a class="popup-text" href="{% url 'jobs_page' %}">Клубы ></a>
+                <a class="popup-text" href="{% url 'logout_page' %}">Выход({{ request.user }}) ></a>
+                <a href="#" class="popup-text" id="popup-text" >Образовательные кружки ></a>
 
-<!--                </div>-->
-<!--                <hr>-->
-<!--            {% empty %}-->
-<!--                <p>На данный момент вакансий нет.</p>-->
-<!--            {% endfor %}-->
-<!--        </div>-->
-<!--    {% else %}-->
+<!--                Need to remove-->
+                <a class="popup-text" href="{% url 'signup_page' %}">Регистрация ></a>
+                <a class="popup-text" href="{% url 'login_page' %}">Вход ></a>
+                {% else %}
+                <a class="popup-text" href="{% url 'main.urls' %}">Главная ></a>
+                <a class="popup-text" href="{% url 'signup_page' %}">Регистрация ></a>
+                <a class="popup-text" href="{% url 'login_page' %}">Вход ></a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="mobile-block">
+            <div class="container">
+                <div class="pic-block">
+                    <h5 class="pic-block--text">Инновационный технический колледж предлагает студентам различные спортивные и образовательные кружки, развивающие студента по его желанному направлению, обеспечивая приятное времяпровождение и студенческую жизнь</h5>
+                </div>
+            </div>
+            <div class="container">
+                <div class="desc">
+                    <h1 class="title">
+                        Специальное оборудование для каждого вида кружка
+                    </h1>
+                    <h3 class="text">
+                        Для каждой секции или клуба у нас есть отдельные залы, помещения, снаряжение за исключением тех тех кружков, которые не требуют отдельного помещения
+                    </h3>
+                </div>
+            </div>
 
-<!--    {% endif %}-->
+            <div class="container">
+                <div class="categories_line">
+                    {% for category in categories %}
+                        <a class="form_categories" href="{% url 'jobs_by_category_page' category.slug %}">
+                            <button type="button" class="button">
+                                <h3 class="course-button-text">{{ category.name }}</h3>
+                            </button>
+                        </a>
+                    {% endfor %}
+<!--                    <button type="button" class="button-sport">-->
+<!--                        <h3 class="course-button-text">Спортивные кружки</h3>-->
+<!--                    </button>-->
+<!--                    <button type="button" class="button-cyber">-->
+<!--                        <h3 class="course-button-text">Киберспортивные кружки</h3>-->
+<!--                    </button>-->
+<!--                    <button type="button" class="button-edu">-->
+<!--                        <h3 class="course-button-text">Образовательные кружки</h3>-->
+<!--                    </button>-->
+<!--                    <button type="button" class="button-table">-->
+<!--                        <h3 class="course-button-text">Настольные кружки</h3>-->
+<!--                    </button>-->
+<!--                    <button type="button" class="button-art">-->
+<!--                        <h3 class="course-button-text">Творческие кружки</h3>-->
+<!--                    </button>-->
+                </div>
+            </div>
+
+            <div class="b_container">
+                <h2 class="title">Спортивные клубы</h2>
+                 {% for club in clubs %}
+                <div class="cards-wrapper"> <!-- Родительский контейнер для flex/grid -->
+                        <div class="wrapper">
+
+                            <a class="badge_link" href="{% url 'job_detail_page' club.pk %}">
+                                <div class="badge">
+                                    <div class="border">
+                                        <div class="b_logo_block">
+                                            <img class="b_logo" src="{{ club.image }}" alt="logo">
+                                        </div>
+                                        <div class="badge-desc">
+                                            <h2 class="badge--name">{{ club.title }}b</h2>
+                                            <div class="category" style="display: none;">
+                                                {{ club.category }}
+                                            </div>
+                                            <h5 class="b_meeting-place"> Место проведения:<h6 class="b_text">{{ club.place }}</h6></h5>
+                                            <h5 class="b_course-to-join">Курсы:<h6 class="b_text">{{ club.cources }}</h6></h5>
+                                            <h5 class="b_payment"> Оплата:<h6 class="b_text">
+                                                {% if club.payment == 0 %}
+                                                    Бесплатно
+                                                {% else %}
+                                                    {{ club.payment }}
+                                                {% endif %}
+                                            </h6></h5>
+                                            <h5 class="b_short-desc">Описание:<h6 class="b_text">{{ club.brief_description }}</h6></h5>
+                                            <div>
+                                                    {% if club.members >= club.seats %}
+                                                        <h3 class="b_place-not-avalible">Мест нет</h3>
+                                                    {% else %}
+                                                        <h3 class="b_place-avalible">Места есть</h3>
+                                                    {% endif %}
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+
+                </div>
+                {% endfor %}
+            </div>
 
 
-<!--<h1>Вакансии</h1>-->
-<!--{% for j in jobs %}-->
-<!--<h3> {{ j.title }}</h3>-->
-<!--<h3>{{ j.title }} </h3>-->
-<!--<h3>{{ j.cources }}</h3>-->
-<!--<h3>{{ j.payment }}</h3>-->
-<!--<h3>{{ j.place }}</h3>-->
-<!--<h3>{{ j.date }}</h3>-->
-<!--{% endfor %}-->
+        </section>
+    </main>
 </body>
 </html>
+
+
+

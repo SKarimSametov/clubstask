@@ -1,29 +1,86 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <script type="text/javascript" src="{% static 'script.js' %}"></script>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');</style>
 </head>
 <body>
-
-
-<div>
-    {% for j in jobs %}
-        <div class="job">
-            <h2>{{ j.title }}</h2>
-            <p><strong>Курсы:</strong> {{ j.cources }}</p>
-            <p><strong>Оплата:</strong> {{ j.payment }}</p>
-            <p><strong>Место:</strong> {{ j.place }}</p>
-            <p><strong>Дата публикации:</strong> {{ j.date|date:"d M Y" }}</p> <!-- Форматирование даты -->
-            <a href="{% url 'job_detail_page' j.pk %}">Обзор</a>
+    <header>
+        <div class="header">
+            <div class="container">
+                <div class="panel">
+                    <img onclick="MenuAction()" class="popup" src="{% static 'images/popup.svg' %}" alt="popup">
+                    <div class="panel--text"><h3>Кружки Колледжа</h3></div>
+                    <div class="empty"></div>
+                </div>
+            </div>
+            <div id="popup" class="popup-content" style="display: none;">
+                <a class="popup-text" href="{% url 'main.urls' %}">Главная ></a>
+                <a class="popup-text" href="#">Категории ></a>
+                <a class="popup-text" href="{% url 'jobs_page' %}">Клубы ></a>
+                <form action="registration_page.html"><a  class="popup-text" href="./registration_page.html">Регистрация ></a></form>
+                <form action="login_page.html"><a class="popup-text" href="./login_page.html">Вход ></a></form>
+                <a class="popup-text" href="./login_page.html">Выход(ruslan) ></a>
+                <a href="#" class="popup-text" id="popup-text" >Образовательные кружки ></a>
+            </div>
         </div>
-        <hr>
-    {% empty %}
-        <p>На данный момент вакансий нет.</p>
-    {% endfor %}
-</div>
+    </header>
+    <main>
+        <section class="mobile-block">
+            <div class="b_container">
+                <h2 class="title">Спортивные клубы</h2>
+                 {% for club in clubs %}
+                <div class="cards-wrapper"> <!-- Родительский контейнер для flex/grid -->
+                        <div class="wrapper">
 
+                            <a class="badge_link" href="{% url 'job_detail_page' club.pk %}">
+                                <div class="badge">
+                                    <div class="border">
+                                        <div class="b_logo_block">
+                                            <img class="b_logo" src="{{ club.image }}" alt="logo">
+                                        </div>
+                                        <div class="badge-desc">
+                                            <h2 class="badge--name">{{ club.title }}b</h2>
+                                            <div class="category" style="display: none;">
+                                                {{ club.category }}
+                                            </div>
+                                            <h5 class="b_meeting-place"> Место проведения:<h6 class="b_text">{{ club.place }}</h6></h5>
+                                            <h5 class="b_course-to-join">Курсы:<h6 class="b_text">{{ club.cources }}</h6></h5>
+                                            <h5 class="b_payment"> Оплата:<h6 class="b_text">
+                                                {% if club.payment == 0 %}
+                                                    Бесплатно
+                                                {% else %}
+                                                    {{ club.payment }}
+                                                {% endif %}
+                                            </h6></h5>
+                                            <h5 class="b_short-desc">Описание:<h6 class="b_text">{{ club.brief_description }}</h6></h5>
+                                            <div>
+                                                    {% if club.members >= club.seats %}
+                                                        <h3 class="b_place-not-avalible">Мест нет</h3>
+                                                    {% else %}
+                                                        <h3 class="b_place-avalible">Места есть</h3>
+                                                    {% endif %}
 
+                                            </div>
 
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
 </body>
 </html>
+
+<script src="../js/javascript.js"></script>

@@ -1,0 +1,583 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    font-family: "Inter", sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-weight: 400;
+  }
+.logo {
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+    height: auto;
+}
+
+.header {
+    background-color: white;
+    width: 100%;
+    height:auto;
+    position: fixed;
+    text-align: center;
+    z-index: 99;
+    margin:0 0 20px 0;
+}
+.mobile-block {
+    min-height: 100vh;
+    padding-top: 68px;
+}
+
+.mobile-block_jbc {
+    min-height: 100vh;
+}
+
+.panel {
+    background-color: #0085D8;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    z-index: 99;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    color: white;
+    text-align: center;
+    padding: 15px 20px;
+}
+.panel--text {
+    /* margin: 15px 40px 13px 10px; */
+}
+.dropbtn {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    margin: 15px 15px 10px 15px;
+    background-color: transparent;
+}
+.panel--popup{
+    position: relative;
+  display: inline-block;
+}
+
+.popup-content{
+    display: none;
+    position: absolute;
+    background-color: #0076C0;
+    min-width: 234px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 82px 25px 25px 0;
+}
+.popup-content a{
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 11px 20px;
+    font-weight: 300;
+}
+
+.popup-text {
+    border-top: 1px solid white;
+    /* padding: 20px; */
+}
+
+#popup-text {
+    background-color: #DA0000;
+}
+
+.popup-content a:hover{
+    background-color: #016eb8;
+}
+.popup-content a:focus{
+    background-color: #016eb8;
+    outline: 0;
+    box-shadow: 0px 1px 7px 8px rgba(30, 35, 88, 0.4) inset;
+}
+
+.show {display:block;}
+.empty {
+    width: 20px;
+    height: 20px;
+}
+.pic-block {
+    background-image: url("images/pic.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 100%;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: inset 530px 530px #0000005d;
+}
+.pic-block--text{
+    margin: 0 20px 0 20px;
+    text-align: center;
+    text-shadow: 0 0 3px #000000, 0 0 5px #000000;
+    font-weight: 600;
+}
+.pic {
+    width: auto;
+    height: 530px;
+    filter: brightness(40%);
+}
+.desc {
+    border: solid 2px #0076C0;
+    margin: 33px 20px 32px 20px;
+    text-align: center;
+    padding: 15px 15px 20px 15px;
+}
+.text{
+    margin-bottom: 20px;
+    color: #959595;
+    font-size: 17px;
+}
+
+.title {
+    font-size: 19px;
+    margin: 30px 0 30px 20px;
+}
+
+.badge {
+    padding: 6px 6px 6px 6px;
+    margin: 0 10px 30px 10px;
+}
+
+.badge_link {
+    position: absolute;
+    z-index: 10;
+    text-decoration: none;
+}
+
+.badge-sport{
+    background: linear-gradient(45deg, #00c6fb, #005bea);
+    padding: 6px 6px 6px 6px;
+    margin: 0 10px 30px 10px;
+    /* border: solid 1px #E0E0E0; */
+}
+
+.b_logo_block {
+    width: 100%;
+}
+
+.badge-desc-sport {
+    color: white;
+    width: 100%;
+    height: auto;
+    background: #0085D8;
+    padding-left: 6px;
+}
+.badge-cyber{
+    background: linear-gradient(90deg, #FF2C2C 50%, #990000 100%);
+    padding: 6px 6px 6px 6px;
+    margin: 0 10px 30px 10px;
+    border: solid 1px white;
+}
+.badge-desc-cyber {
+    width: 100%;
+    color:white;
+    height: auto;
+    background: #B50000;
+    padding-left: 6px;
+}
+.badge-edu{
+    background: linear-gradient(90deg, #0B42CF 50%, #010158 100%);
+    padding: 6px 6px 6px 6px;
+    margin: 0 10px 30px 10px;
+    border: solid 1px white;
+}
+.badge-desc-edu {
+    width: 100%;
+    color: white;
+    height: auto;
+    background: #07008D;
+    padding-left: 6px;
+}
+.badge-table{
+    background: linear-gradient(90deg, #FFBF00 50%, #A04A09 100%);
+    padding: 6px 6px 6px 6px;
+    margin: 0 10px 30px 10px;
+    border: solid 1px white;
+}
+.badge-desc-table {
+    width: 100%;
+    color: white;
+    height: auto;
+    background: #DFA700;
+    padding-left: 6px;
+}
+.badge-art{
+    background: linear-gradient(90deg, #00cca0 50%, #0970a0 100%);
+    padding: 5px 5px 5px 5px;
+    margin: 0 10px 30px 10px;
+    border: solid 1px white;
+}
+.badge-desc-art {
+    width: 100%;
+    color: white;
+    height: auto;
+    background: #00af89;
+    padding-left: 6px;
+}
+.b_logo {
+    object-fit: cover;
+    object-position: center;
+    /* height:60%;
+    width:60%; */
+    height: 100%;
+    width: 100%;
+}
+.b_payment, .b_course-to-join, .b_meeting-place, .b_short-desc {
+    margin: 5px;
+    font-weight: 700;
+    display: flex;
+    flex-direction: row;
+}
+.b_place-avalible {
+    margin: 10px;
+    font-weight: 700;
+    color: lime;
+    text-align: center;
+}
+.b_place-not-avalible {
+    margin: 10px;
+    font-weight: 700;
+    color: red;
+    text-align: center;
+}
+.badge--name {
+    text-align: center;
+    margin:10px;
+}
+.b_text {
+    margin:5px;
+    /* font-size: 15px; */
+}
+.border {
+    border: 1px solid #E0E0E0;
+    display: flex;  
+    flex-direction: row;
+}
+.categories_line {
+    display:flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin: 0 0 20px 20px;
+    padding: 6px 6px 6px 6px;
+    border-radius: 5px;
+}
+.button-sport {
+    min-width: 250px;
+    background: linear-gradient(45deg, #00c6fb, #005bea);
+    border-radius: 15px;
+    border: none;
+    appearance: none;
+    margin:5px 20px 5px 5px;
+    padding: 10px 10px 10px 10px;
+    cursor: pointer;
+    scroll-snap-align: start;
+    color: white;
+    transition: 0.3s ease-in-out;
+
+}
+.button-sport:focus{
+    background: linear-gradient(45deg, #7be2ff, #6e9ae0);
+    color:rgb(220, 220, 220);
+}
+.button-cyber {
+    min-width: 250px;
+    background: linear-gradient(90deg, #FF2C2C 50%, #990000 100%);
+    border-radius: 15px;
+    border: none;
+    appearance: none;
+    margin:5px 20px 5px 5px;
+    padding: 10px 10px 10px 10px;
+    cursor: pointer;
+    scroll-snap-align: start;
+    color: white;
+    transition: 0.3s ease-in-out
+}
+.button-cyber:focus{
+    background: linear-gradient(90deg, #ff8888 50%, #8f4949 100%);
+    color:rgb(220, 220, 220);
+}
+.button-edu {
+    min-width: 250px;
+    background: linear-gradient(90deg, #0B42CF 50%, #010158 100%);
+    border-radius: 15px;
+    border: none;
+    appearance: none;
+    margin:5px 20px 5px 5px;
+    padding: 10px 10px 10px 10px;
+    cursor: pointer;
+    scroll-snap-align: start;
+    color: white;
+    transition: 0.3s ease-in-out
+}
+.button-edu:focus{
+    background: linear-gradient(90deg, #6e89cf 50%, #2b2b52 100%);
+    color:rgb(220, 220, 220);
+}
+.button-table {
+    min-width: 250px;
+    background: linear-gradient(90deg, #FFBF00 50%, #A04A09 100%);
+    border-radius: 15px;
+    border: none;
+    appearance: none;
+    margin:5px 20px 5px 5px;
+    padding: 10px 10px 10px 10px;
+    cursor: pointer;
+    scroll-snap-align: start;
+    color: white;
+    transition: 0.3s ease-in-out
+}
+.button-table:focus {
+    background: linear-gradient(90deg, #ffe083 50%, #996f4f 100%);
+    color:rgb(220, 220, 220);
+}
+.button-art {
+    min-width: 250px;
+    background: linear-gradient(90deg, #00cca0 50%, #0970a0 100%);
+    border-radius: 15px;
+    border: none;
+    appearance: none;
+    margin:5px 20px 5px 5px;
+    padding: 10px 10px 10px 10px;
+    cursor: pointer;
+    scroll-snap-align: start;
+    color: white;
+    transition: 0.3s ease-in-out
+}
+.button-art:focus{
+    background: linear-gradient(90deg, #68c7b2 50%, #52859c 100%);
+    color:rgb(220, 220, 220);
+}
+.container_protection {
+    margin:0 20px 20px 0;
+    text-align: center;
+}
+.container_protection {
+    margin:0 20px 20px 0;
+}
+.register {
+    color: white;
+    min-width: 350px;
+    max-height: 50px ;
+    margin:0 auto;
+    padding: 10px 10px 10px 10px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    display: flex;
+    flex-direction: row;
+    background-color: #00C6FB;
+    justify-content: center;
+    border: none;
+    appearance: none;
+    border-radius: 15px;
+}
+.register svg {
+    display: inline-block;
+    vertical-align: middle;
+    fill: #fff;
+    width: 20px;
+    height: 20px;
+    margin-right: 0.25rem;
+}
+.register:hover{
+    background-color: #016eb8;
+}
+.register:focus{
+    background-color: #016eb8;
+    outline: 0;
+    box-shadow: 0px 1px 7px 8px rgba(30, 35, 88, 0.4) inset;
+}
+.login {
+    color: white;
+    min-width: 350px;
+    max-height: 50px ;
+    margin:0 auto;
+    padding: 10px 10px 10px 10px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    display: flex;
+    flex-direction: row;
+    background-color: #00C6FB;
+    justify-content: center;
+    border: none;
+    appearance: none;
+    border-radius: 15px;
+}
+.login svg {
+    display: inline-block;
+    vertical-align: middle;
+    fill: #fff;
+    width: 20px;
+    height: 20px;
+    margin-right: 0.25rem;
+}
+.login:hover{
+    background-color: #016eb8;
+}
+.login:focus{
+    background-color: #016eb8;
+    outline: 0;
+    box-shadow: 0px 1px 7px 8px rgba(30, 35, 88, 0.4) inset;
+}
+.back {
+    color: white;
+    min-width: 350px;
+    max-height: 50px ;
+    margin:0 auto;
+    padding: 10px 10px 10px 10px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    display: flex;
+    flex-direction: row;
+    background-color: #00C6FB;
+    justify-content: center;
+    border: none;
+    appearance: none;
+    border-radius: 15px;
+}
+.back svg {
+    display: inline-block;
+    vertical-align: middle;
+    fill: #fff;
+    width: 20px;
+    height: 20px;
+    margin-right: 0.25rem;
+}
+.back:hover{
+    background-color: #016eb8;
+}
+.back:focus{
+    background-color: #016eb8;
+    outline: 0;
+    box-shadow: 0px 1px 7px 8px rgba(30, 35, 88, 0.4) inset;
+}
+.button-text{
+    font-weight: bold;
+}
+.btn-space {
+    padding: 5px 5px 5px 5px;
+}
+.protection-title{
+    font-size: large;
+    font-weight: bold;
+    margin:5px 5px 20px 5px
+}
+.input {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    margin: 5px 5px 0px 5px;
+
+}
+.input label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.input input {
+    margin-bottom: 20px;
+    font-weight: bold;
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 0.25rem;
+    transition: 0.3s ease-in-out;
+}
+.input input::placeholder{
+  color: #212529;
+  opacity: 0.4;
+}
+.input input:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #bdbdbd;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
+}
+.input ul li {
+    display: none;
+}
+
+.search-title{
+    display: flex;
+    justify-content: center;
+    font-size: large;
+    font-weight: bold;
+}
+#search-form {
+    margin: 10px;
+    display: flex;
+}
+#search-form input {
+    flex: 1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 6px 8px;
+    font-size: 16px;
+}
+#search-form button {
+    border:none;
+    background-color: #ccc;
+    color:#fff;
+    padding:6px 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.helptext {
+    display: none;
+}
+
+#see-more__modal-window {
+    display: flex;
+    position: absolute;    /*  Модальное окно должно иметь абсолютную позицию, когда как у родительских - относительную */
+    z-index: 2;
+    color: black;
+    padding: 11px 10px;
+    margin-right: 20px;
+    font-size: 16px;
+}
+.see-more__modal-window_sport {
+    background: linear-gradient(45deg, #ffffff, #CBCBCB);
+}
+.see-more__modal-window_art {
+    background: linear-gradient(90deg, #00cca0 50%, #0970a0 100%);
+}
+.see-more__modal-window_edu {
+    background: linear-gradient(90deg, #0B42CF 50%, #010158 100%);
+}
+.see-more__modal-window_table {
+    background: linear-gradient(90deg, #FFBF00 50%, #A04A09 100%);
+}
+.see-more__modal-window_cyber {
+    background: linear-gradient(90deg, #FF2C2C 50%, #990000 100%);
+}
+.cross {
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.cards-wrapper {
+    padding-bottom: 315px;
+}
+

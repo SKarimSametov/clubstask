@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Category, ClubModels, Guide
+from .models import Category, ClubModels
 # # Create your views here.
 from django.contrib.auth import login, authenticate, logout
 from .forms import NewUserForm
@@ -7,12 +7,10 @@ from django.contrib.auth.forms import AuthenticationForm
 
 def test(request):
     categories = Category.objects.all()
-    guides = Guide.objects.all()
-    jobs = ClubModels.objects.all().order_by('-date')
+    clubs = ClubModels.objects.all().order_by('-date')
     context = {
         'categories': categories,
-        'jobs': jobs,
-        'guides': guides
+        'clubs': clubs,
     }
     return render(request, "mainpage.html", context)
 
@@ -20,9 +18,9 @@ def test(request):
 
 
 def jobs_page(request):
-    jobs = ClubModels.objects.all().order_by('-date')
+    clubs = ClubModels.objects.all().order_by('-date')
     context = {
-        'jobs': jobs
+        'clubs': clubs
     }
     return render(request, 'jobs.html', context)
 
@@ -41,40 +39,23 @@ def full_info(request):
     return render(request, 'base.html')
 
 
-
-def guides(request):
-    guides = Guide.objects.all()
-    context = {
-        'guides': guides
-    }
-    return render(request, 'guides.html', context)
-
 # d
 
 def job_detail_page(request, pk):
-    job = get_object_or_404(ClubModels, pk=pk)
+    club = get_object_or_404(ClubModels, pk=pk)
     context = {
-        'job': job
+        'club': club
     }
     return render(request, "job-detail.html", context)
-
-
-def guides_detail_page(request, pk):
-    guide = get_object_or_404(Guide, pk=pk)
-    context = {
-        'guide': guide
-    }
-    return render(request, 'guide-detail.html', context)
-
 
 
 
 def jobs_by_category_page(request, slug):
     category = get_object_or_404(Category, slug=slug)
-    jobs = ClubModels.objects.filter(category=category)
+    clubs = ClubModels.objects.filter(category=category)
     context = {
         'category': category,
-        'jobs': jobs
+        'clubs': clubs
     }
     return render(request, "jobs-by-category.html", context)
 

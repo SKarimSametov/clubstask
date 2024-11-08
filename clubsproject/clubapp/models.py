@@ -21,44 +21,26 @@ class Category(models.Model):
 
 
 class ClubModels(models.Model):
-    title = models.CharField("Ваканс",max_length=14, )
+    title = models.CharField("Клуб",max_length=20)
     cources = models.CharField("Курс",max_length=15)
-    payment = models.IntegerField("цена",max_length=24)
-    brief_description = models.CharField("краткое описание:", max_length=83, default="None")
-    full_description = models.TextField("Описание:", max_length=2200, default="None")
-    groups = models.CharField("группы", max_length=500, default="None")
+    payment = models.IntegerField("Цена", default="Бесплатно")
+    brief_description = models.CharField("Краткое описание:", max_length=83, default="Нету")
+    full_description = models.TextField("Описание:", max_length=2200, default="Нету")
+    groups = models.CharField("группы", max_length=500, default="Нету")
     members = models.IntegerField("участники", default=0)
     seats = models.IntegerField("места", default=0)
-    place = models.CharField("место",max_length=29, )
+    place = models.CharField("место",max_length=29)
     schedule = models.CharField("график", max_length=2200)
+    image = models.CharField("Фото", max_length=10000, default="https://w7.pngwing.com/pngs/537/283/png-transparent-the-columbus-metropolitan-club-service-business-sales-building-none-building-text-service.png")
     # date = models.DateTimeField("дата",auto_now_add=True)
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name = 'выберите категорию')
     date = models.DateTimeField("Дата публикации:",default=datetime.now)
 
     class Meta:
-        verbose_name = 'Вакансия'
-        verbose_name_plural = 'Вакансии'
+        verbose_name = 'Клуб'
+        verbose_name_plural = 'Клубы'
 
     def __str__(self):
         return self.title
 
-
-# title
-# cources
-# payment
-# place
-# date
-
-class Guide(models.Model):
-    title = models.CharField("Заголовок", max_length=50)
-    description = models.TextField("Описание гайда")
-    image = models.CharField("URL фото", max_length=500)
-    date = models.DateTimeField("Дата публикации:",default=datetime.now)
-
-    class Meta:
-        verbose_name = 'ГАйд'
-        verbose_name_plural = 'Гайды'
-
-    def __str__(self):
-        return self.title
